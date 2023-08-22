@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Count films: {{count}}</p>
+        <form action="{% url 'home' %}">
+            <p>Search film:</p>
+            <input name="SearchMovie" type="text"/>
+            <input type="submit"/>
+            <p>Searching for: {{ searchTerm }}</p>
+        </form>
+    </div>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for movie in movies %}
+                {% if forloop.first %}
+                    <div class="carousel-item active">
+                {% else %}
+                    <div class="carousel-item">
+                {% endif %}
+                    <a href="{% url 'detail' movie.id %}">
+                        <h2>{{ movie.title }}</h2>
+                    </a>
+                        <h3>{{ movie.description }}</h3>
+                        <img src="{{ movie.image.url }}"></br>
+                        {% if movie.url %}
+                        <a href="{{ movie.url }}">Movie Link</a>
+                        {% endif %}
+                    </div>
+            {% endfor %}
+        </div>
+{% endblock content %}

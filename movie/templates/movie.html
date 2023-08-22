@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Movie page</h1>
+    <p>Film name: {{ movie.title }}</p>
+    <p>Movie description: {{ movie.description }}</p>
+    <img src="{{ movie.image.url }}"> </br>
+    {% if movie.url %}
+        <a href="{{ movie.url }}">Movie Wiki</a>
+    {% endif %}
+{% endblock content %}
